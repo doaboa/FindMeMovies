@@ -14,3 +14,6 @@ else
   end
 
 
+#http://api.themoviedb.org/2.1/methods/Genres.getList
+#https://www.themoviedb.org/talk/51c8742a760ee33f08101f52
+#http://api.themoviedb.org/2.1/methods/Movie.browse
