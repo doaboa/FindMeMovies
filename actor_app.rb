@@ -1,6 +1,5 @@
 #-----GEMS and APIs
 
-require 'rubygems'
 require 'ruby-tmdb'
 
 Tmdb.api_key = "6e837186b09388ff716901a70d300f61"
@@ -16,51 +15,36 @@ Tmdb.default_language = "en"
 
 puts "Hi!  What movie genre do you feeling like watching today?  Either type the genre, or type 'list' to get a list of all genres."
 
-@answer = gets.chomp
+@answer = gets.chomp.capitalize
 
 if @answer == 'list'
 	puts "-----------------------"
 	puts @movie_genres.keys
 	puts "-----------------------"
 	puts "Now pick your genre."
-	@genre = gets.chomp
-
-else
+	@genre = gets.chomp.capitalize
+elsif @movie_genres.include?(@answer)
 	@genre = @answer
-
+else
+	until @genre == @movie_genres.include?(@answer)
+		puts "-----------------------"
+		puts @movie_genres.keys
+		puts "-----------------------"
+		puts "That wasn't a real answer.  Look at the list and pick your genre!"
+		@genre = gets.chomp.capitalize
+		return @genre
+	end
 end
 
 @genre_id = @movie_genres[@genre]
 
 #-------Pulling from API
 
-TmdbMovie.browse(:order_by => "rating", :order => "desc", :genres => @genre_id, :min_votes => 5, :page => 1, :per_page => 10, :language => "en", :expand_results => true)
-  
+results = {}
 
-
-def self.browse(options)
-  options = {
-    :expand_results => false
-  }.merge(options)
+results = TmdbMovie.browse(:order_by => "rating", :order => "desc", :genres => @genre_id, :min_votes => 5, :page => 1, :per_page => 2, :language => "en", :expand_results => false)
   
-  expand_results = options.delete(:expand_results)
-  language = options.delete(:language)
-  
-  results = []
-  results << Tmdb.api_call("Movie.browse", options, language)
-  
-  results.flatten!
-  results.compact!
-  
-  results.map!{|m| TmdbMovie.new(m, expand_results, language) }
-  
-  if(results.length == 1)
-    return results[0]
-  else
-    return results
-  end
-  
-end
+puts results["name"]  
 
 #--------Resources
 
