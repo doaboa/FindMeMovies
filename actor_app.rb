@@ -44,7 +44,9 @@ results = {}
 
 results = TmdbMovie.browse(:order_by => "rating", :order => "desc", :genres => @genre_id, :min_votes => 5, :page => 1, :per_page => 2, :language => "en", :expand_results => false)
   
-puts results["name"]  
+results.each do |result|
+	puts result.name
+end
 
 #--------Resources
 
