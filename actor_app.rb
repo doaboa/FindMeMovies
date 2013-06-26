@@ -17,36 +17,40 @@ puts "Hi!  What movie genre do you feeling like watching today?  Either type the
 
 @answer = gets.chomp.capitalize
 
-if @answer == 'list'
+if @answer == 'List'
 	puts "-----------------------"
 	puts @movie_genres.keys
 	puts "-----------------------"
 	puts "Now pick your genre."
 	@genre = gets.chomp.capitalize
 elsif @movie_genres.include?(@answer)
-	@genre = @answer
 else
-	until @genre == @movie_genres.include?(@answer)
+	until @movie_genres.include?(@answer)
 		puts "-----------------------"
 		puts @movie_genres.keys
 		puts "-----------------------"
-		puts "That wasn't a real answer.  Look at the list and pick your genre!"
-		@genre = gets.chomp.capitalize
-		return @genre
+		puts "You fail.  Look at the list and pick again."
+		@answer = gets.chomp.capitalize
 	end
 end
-
+	
+@genre = @answer		
 @genre_id = @movie_genres[@genre]
+
+puts "How many movies would you like me to pull from this genre?"
+@number = gets.chomp
 
 #-------Pulling from API
 
-results = {}
+@results = {}
+@results = TmdbMovie.browse(:order_by => "rating", :order => "desc", :genres => @genre_id, :min_votes => 100, :page => 1, :per_page => @number, :language => "en", :expand_results => false)
 
-results = TmdbMovie.browse(:order_by => "rating", :order => "desc", :genres => @genre_id, :min_votes => 5, :page => 1, :per_page => 2, :language => "en", :expand_results => false)
-  
-results.each do |result|
+puts "-------------------" 
+@results.each do |result|
 	puts result.name
 end
+puts "-------------------" 
+
 
 #--------Resources
 
