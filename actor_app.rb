@@ -41,6 +41,8 @@ end
 	
 # end
 
+#-------Methods
+
 def execute
 	puts "Hey stranger!  What's your name?"
 	@name = gets.chomp.capitalize
