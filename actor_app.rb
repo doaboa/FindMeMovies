@@ -7,7 +7,7 @@
 
 require 'ruby-tmdb'
 
-Tmdb.api_key = "6e837186b09388ff716901a70d300f61"
+Tmdb.api_key = ENV["TMDB_API"]
 Tmdb.default_language = "en"
 
 
@@ -18,19 +18,19 @@ Tmdb.default_language = "en"
 
 #-------Class
 
-class User
-	attr_accessor :name, :twitter_handle
+# class User
+# 	attr_accessor :name, :twitter_handle
 
 #-----Output Starts
 
-get_data
+# get_data
 
-def get_data
-	puts "Hey stranger!  What's your name?"
-	@name = gets.chomp
-	puts "Cool, #{@name}, what's your twitter handle?"
-	@twitter_handle = gets.chomp
-end
+# def get_data
+	# puts "Hey stranger!  What's your name?"
+	# @name = gets.chomp
+	# puts "Cool, #{@name}, what's your twitter handle?"
+	# @twitter_handle = gets.chomp
+# end
 
 puts "Hi!  What movie genre do you feeling like watching today?  Either type the genre, or type 'list' to get a list of all genres."
 
@@ -70,7 +70,7 @@ puts "-------------------"
 end
 puts "-------------------" 
 
-end
+# end
 #--------References
 
 #http://api.themoviedb.org/2.1/methods/Movie.browse
