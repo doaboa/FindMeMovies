@@ -1,5 +1,5 @@
 ###-------NOTES
-# Allow you to set who you are- "hipster (obscure movies)" "drinker (shitty movie)" 
+# Allow you to set who you are- "hipster (obscure movies, no reviews)" etc 
 # sandboxtweeter
 # adding users and class
 
