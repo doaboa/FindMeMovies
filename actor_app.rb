@@ -1,8 +1,5 @@
 ###-------NOTES
-# Allow you to set who you are- "hipster (obscure movies, no reviews)" etc 
 # sandboxtweeter
-# adding users and class
-
 
 #-----GEMS and APIs
 
@@ -25,21 +22,6 @@ end
 @movie_genres = {"Action" => 28, "Adventure" => 12, "Animation" => 16, "Comedy" => 35, "Crime" => 80, "Disaster" => 105, "Documentary" => 99, "Drama" => 18, "Eastern" => 82, "Fantasy" => 14, "History" => 36, "Holiday" => 10595, "Horror" => 27, "Music" => 10402, "Musical" => 22, "Mystery" => 9648, "RoadMovie" => 115, "Science Fiction" => 878, "Short" => 10749, "Sport" => 9805, "Suspense" => 10748, "Thriller" => 53, "Western" => 37}
 
 
-#-------Class
-
-# class User
-#  attr_accessor :name, :twitter_handle
-
-# #-----Output Starts
-
-# puts "If you are an existing user, please type your name.  Otherwise, type new."
-# userornot = gets.chomp
-
-# if userornot == 'new'
-# 	self.initialize
-# else
-	
-# end
 
 #-------Methods
 
